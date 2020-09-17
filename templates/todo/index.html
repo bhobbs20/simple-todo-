@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+
+{% block title %} | Welcome {% endblock %}
+
+{% block content %}
+
+<div>
+
+<h1>Todos</h1>
+    <a href="{% url 'create_todo' %}">Create Todo</a>
+<div>
+    <ul>
+
+        {% for todo in todos %}
+            <a href="{% url 'todo_detail' todo.id %}">
+        <li>{{ todo.name }} <span><p>Due date: {{ todo.due_date }}</p></span></li>
+            </a>
+
+            <a href="{% url 'todo_update' todo.id %}">Edit</a>
+            <a href="{% url 'todo_delete' todo.id %}">Delete</a>
+    {% endfor %}
+    </ul>
+
+</div>
+</div>
+
+{% endblock %}
